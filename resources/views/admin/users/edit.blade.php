@@ -6,7 +6,7 @@
 
 @section('content')
 
-	{!! Form::open(['route' => 'users.store', 'method' => 'PUT']) !!}	
+	{!! Form::open(['route' => ['users.update', $user], 'method' => 'PUT']) !!}	
 
 		<div class="form-group">
 			{!! Form::label('name', 'Nombre') !!} 

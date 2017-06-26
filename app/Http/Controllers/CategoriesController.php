@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Laracasts\Flash\Flash;
-use App\Http\Requests\UserRequest;
 
-class UsersController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(2);
-        return view('admin.users.index')->with('users', $users);
+        //
     }
 
     /**
@@ -27,7 +23,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -36,17 +32,9 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        //dd($request->all());
-        $user = new User($request->all());
-        $user->password = bcrypt($request->password);
-        $user->save();
-        //dd("usuario creado");
-
-        Flash::success('Se ha creado el usuario: '.$user->name);
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -68,9 +56,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view("admin.users.edit")->with("user", $user);
+        //
     }
 
     /**
@@ -82,17 +68,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->type = $request->type;
-        //$user->fill($request->all());
-
-        $user->save();
-
-        Flash::danger("El usuario ".$user->name." ha sido editado con exito.!");
-
-        return redirect()->route("users.index");
+        //
     }
 
     /**
@@ -103,11 +79,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-
-        Flash::danger("El usuario ".$users->name." ha sido borrado de forma exitosa");
-
-        return redirect()->route('users.index');
+        //
     }
 }

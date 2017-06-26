@@ -14,6 +14,8 @@
 		      	<h4 class="panel-title">@yield('panel_title', 'Default')</h4>
 		    </div>
 			<div class="panel-body">
+				@include('admin.template.partials.errors')
+				@include('flash::message')
 				@yield('content', 'Default')
 			</div>
 		</div>
