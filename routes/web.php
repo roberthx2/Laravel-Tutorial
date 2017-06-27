@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Auth\Middleware\Authenticate;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

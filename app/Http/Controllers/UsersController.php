@@ -90,7 +90,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        Flash::danger("El usuario ".$user->name." ha sido editado con exito.!");
+        Flash::error("El usuario ".$user->name." ha sido editado con exito.!");
 
         return redirect()->route("users.index");
     }
@@ -106,7 +106,7 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        Flash::danger("El usuario ".$users->name." ha sido borrado de forma exitosa");
+        Flash::error("El usuario ".$user->name." ha sido borrado de forma exitosa");
 
         return redirect()->route('users.index');
     }
