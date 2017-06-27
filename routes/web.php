@@ -49,5 +49,31 @@ Route::group(['prefix'=> 'admin'], function () {
 	]);
 
 	Route::resource('categories', 'CategoriesController');
+	Route::get('categories/{id}/destroy', [
+		'uses' => 'CategoriesController@destroy',
+		'as' => 'admin.categories.destroy'
+	]);
 });
 
+/*Route::get('admin/auth/login', [
+	'uses'=>'Auth\LoginController@getLogin',
+	'as'=>'admin.auth.login'
+]);
+
+Route::post('admin/auth/login', [
+	'uses'=>'Auth\LoginController@postLogin',
+	'as'=>'admin.auth.login'
+]);
+
+Route::get('admin/auth/logout', [
+	'uses'=>'Auth\LoginController@getLogout',
+	'as'=>'admin.auth.logout'
+]);
+*/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
