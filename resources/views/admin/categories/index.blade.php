@@ -26,6 +26,6 @@
 		</tbody>
 	</table>
 
-	{!! $categories->render() !!}
+	<center> {!! $categories->render() !!} </center>
 
 @endsection

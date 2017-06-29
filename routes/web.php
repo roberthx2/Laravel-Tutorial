@@ -42,7 +42,7 @@ Route::get('/', function () {
 	]);
 });*/
 
-Route::group(['prefix'=> 'admin'], function () {
+Route::group(['prefix'=> 'admin', 'middleware' => ['auth']], function () {
 
 	Route::resource('users', 'UsersController');
 	Route::get('users/{id}/destroy', [
@@ -54,6 +54,23 @@ Route::group(['prefix'=> 'admin'], function () {
 	Route::get('categories/{id}/destroy', [
 		'uses' => 'CategoriesController@destroy',
 		'as' => 'admin.categories.destroy'
+	]);
+
+	Route::resource('tags', 'TagsController');
+	Route::get('tags/{id}/destroy', [
+		'uses' => 'TagsController@destroy',
+		'as' => 'admin.tags.destroy'
+	]);
+
+	Route::resource('articles', 'ArticlesController');
+	Route::get('articles/{id}/destroy', [
+		'uses' => 'ArticlesController@destroy',
+		'as' => 'admin.articles.destroy'
+	]);
+
+	Route::get('images', [
+		'uses' => 'ImagesController@index',
+		'as' => 'admin.images.index'
 	]);
 });
 
@@ -72,10 +89,21 @@ Route::get('admin/auth/logout', [
 	'as'=>'admin.auth.logout'
 ]);
 */
-Auth::routes();
+/*Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+*/
+
+Route::get('/logout', function () {
+	Auth::logout();
+
+	return redirect('/');
+});
+
+Route::auth();
+
+//Route::get('/home', 'HomeController@index');

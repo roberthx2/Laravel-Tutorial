@@ -34,6 +34,6 @@
 		</tbody>
 	</table>
 
-	{!! $users->render() !!}
+	<center> {!! $users->render() !!} </center>
 
 @endsection

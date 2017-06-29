@@ -95,11 +95,13 @@
 </html>
 -->
 
-@extends('admin.template.main');
+@extends('admin.template.main')
 
 @section('title', 'Inicio de mi pagina')
 
+@section('panel_title', 'Bienvenido')
+
 @section('content')
-    <h1> Hola esto es bootstrap </h1>
-    <a href="" class="btn btn-success"> Soy un boton de bootstrap </a>
+    <h1> Laravel v5.4 </h1>
+    <a href="" class="btn btn-success"> Bootstrap </a>
 @endsection

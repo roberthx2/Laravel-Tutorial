@@ -10,14 +10,16 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    @if(Auth::check())
       <ul class="nav navbar-nav">
         <li><a href="/">Inicio</a></li>
+      </ul>
+    @if(Auth::check())
+      <ul class="nav navbar-nav">
         <li><a href="{{ route('users.index') }}">Usuarios</a></li>
         <li><a href="{{ route('categories.index') }}">Categorias</a></li>
-        <li><a href="#">Articulos</a></li>
-        <li><a href="#">Imagenes</a></li>
-        <li><a href="#">Tags</a></li>
+        <li><a href="{{ route('articles.index') }}">Articulos</a></li>
+        <li><a href="{{ route('admin.images.index') }}">Imagenes</a></li>
+        <li><a href="{{ route('tags.index') }}">Tags</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Pagina principal</a></li>
@@ -28,6 +30,11 @@
           </ul>
         </li>
       </ul>
+      @endif
+
+      @if(Auth::guest())
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/login"> Login </a></li>
       @endif
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
