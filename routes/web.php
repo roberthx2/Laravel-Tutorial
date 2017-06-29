@@ -13,11 +13,6 @@ use Illuminate\Auth\Middleware\Authenticate;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 /*Route::get('articles/{nombre?}', function ($nombre = "No coloco nombre") {
 	echo "Esta es la seccion de articulos y el nombre es: ".$nombre;
 });*/
@@ -42,7 +37,15 @@ Route::get('/', function () {
 	]);
 });*/
 
+Route::get('/', ['as'=>'front.index', function () {
+    return view('front.index');
+}]);
+
 Route::group(['prefix'=> 'admin', 'middleware' => ['auth']], function () {
+
+	/*Route::get('/', ['as'=>'admin.index', function() {
+		return view('admin.index');
+	}]);*/
 
 	Route::resource('users', 'UsersController');
 	Route::get('users/{id}/destroy', [
@@ -74,6 +77,14 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['auth']], function () {
 	]);
 });
 
+Route::get('/logout', function () {
+	Auth::logout();
+
+	return redirect('/');
+});
+
+Route::auth();
+
 /*Route::get('admin/auth/login', [
 	'uses'=>'Auth\LoginController@getLogin',
 	'as'=>'admin.auth.login'
@@ -97,13 +108,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 */
-
-Route::get('/logout', function () {
-	Auth::logout();
-
-	return redirect('/');
-});
-
-Route::auth();
 
 //Route::get('/home', 'HomeController@index');
