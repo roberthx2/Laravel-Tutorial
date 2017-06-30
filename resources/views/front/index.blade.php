@@ -19,7 +19,7 @@
 								<hr>
 								<i class="fa fa-folder-open-o"></i> <a href="">{{ $article->category->name }}</a>
 								<div class="pull-right">
-									<i class="fa fa-clock-o"></i> {{ $article->created_at->difForHumans() }}
+									<i class="fa fa-clock-o"></i> {{ $article->created_at->diffForHumans() }}
 								</div>
 							</div>
 						</div>
@@ -29,27 +29,7 @@
 			{{ $articles->render() }}
 		</div>
 		<div class="col-md-4 aside">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Categorias</h3>
-				</div>
-				<div class="panel-body">
-					<ul class="list-group">
-						<li class="list-group-item">
-							<span class="badge">14</span>
-							Noticias
-						</li>
-						<li class="list-group-item">
-							<span class="badge">2</span>
-							Promocions
-						</li>
-						<li class="list-group-item">
-							<span class="badge">60</span>
-							Comentarios
-						</li>
-					</ul>
-				</div>
-			</div>
+			@include('front.template.partials.aside')
 		</div>
 	</div>
 
