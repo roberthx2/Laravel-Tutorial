@@ -5,37 +5,28 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class="row">
-				<div class="col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<a href="#" class="thumbnail">
-								<img src="{{ asset('image/php.jpg') }}" class="img-responsive img-article" alt="...">
-							</a>
-							<h3 class="text-center">Titulo de este nuevo articulo veamos si es largo</h3>
-							<hr>
-							<i class="fa fa-folder-open-o"></i> <a href="">Category</a>
-							<div class="pull-right">
-								<i class="fa fa-clock-o"></i> Hace 3 minutos
+
+				@foreach($articles as $article)
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<a href="#" class="thumbnail">
+								@foreach($article->images as $image)
+									<img src="{{ asset('image/articles/'.$image->name) }}" class="img-responsive img-article" alt="...">
+								@endforeach
+								</a>
+								<h3 class="text-center">{{ $article->title }}</h3>
+								<hr>
+								<i class="fa fa-folder-open-o"></i> <a href="">{{ $article->category->name }}</a>
+								<div class="pull-right">
+									<i class="fa fa-clock-o"></i> {{ $article->created_at->difForHumans() }}
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<a href="#" class="thumbnail">
-								<img src="{{ asset('image/laravel.png') }}" class="img-responsive img-article" alt="...">
-							</a>
-							<h3 class="text-center">Framewoork Laravel 5.4</h3>
-							<hr>
-							<i class="fa fa-folder-open-o"></i> <a href="">Category</a>
-							<div class="pull-right">
-								<i class="fa fa-clock-o"></i> Hace 12 minutos
-							</div>
-						</div>
-					</div>
-				</div>
+				@endForeach
 			</div>
+			{{ $articles->render() }}
 		</div>
 		<div class="col-md-4 aside">
 			<div class="panel panel-primary">

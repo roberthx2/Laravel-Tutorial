@@ -37,9 +37,13 @@ use Illuminate\Auth\Middleware\Authenticate;
 	]);
 });*/
 
-Route::get('/', ['as'=>'front.index', function () {
-    return view('front.index');
-}]);
+//Rutas del FrontEnd
+
+Route::get('/', [
+		'as'=>'front.index', 
+		'uses' => 'FrontController@index'
+]);
+
 
 Route::group(['prefix'=> 'admin', 'middleware' => ['auth']], function () {
 
